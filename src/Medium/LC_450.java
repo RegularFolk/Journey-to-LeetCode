@@ -20,7 +20,7 @@ public class LC_450 {
         }
     }
 
-    //将待删除节点替换成左子树的最大值或者右子树的最小值
+    //将待删除节点替换成左子树的最大值或者右子树的最小值,此处选择右子树的最小值
     public TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {
             return null;
