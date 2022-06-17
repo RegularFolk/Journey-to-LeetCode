@@ -4,10 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LC_1507 {
-    public static void main(String[] args) {
-        System.out.println(reformatDate("20th Oct 2052"));
-    }
-    public static String reformatDate(String date) {
+    public String reformatDate(String date) {
         Map<String, String> months = new HashMap<>();
         months.put("Jan", "01");
         months.put("Feb", "02");

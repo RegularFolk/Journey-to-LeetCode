@@ -15,10 +15,10 @@ public class LC_829 {
         if (n == 1) {
             return 1;
         }
-        boolean odd = n % 2 == 1;
-        int ans = odd ? 2 : 1;
+        int ans = n % 2 == 1 ? 2 : 1;
         List<int[]> factor = new LinkedList<>();
-        for (int i = 2; i <= Math.sqrt(n); i++) {
+        double sqrt = Math.sqrt(n);
+        for (int i = 2; i <= sqrt; i++) {
             if (n % i == 0) {
                 factor.add(new int[]{i, n / i});
             }
