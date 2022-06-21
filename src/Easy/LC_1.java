@@ -1,12 +1,15 @@
 package Easy;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+
 /*
 模拟
 哈希
+排序+二分(但是所求是下标，排序后会丢失下标)
 */
 
 public class LC_1 {
@@ -48,5 +51,31 @@ public class LC_1 {
             }
         }
         return null;
+    }
+
+    public int[] twoSum2(int[] nums, int target) {
+        Arrays.sort(nums);
+        int length = nums.length;
+        for (int i = 0; i < length - 1; i++) {
+            int right = binarySearch(nums, i + 1, length, target - nums[i]);
+            if (right != -1) {
+                return new int[]{i, right};
+            }
+        }
+        throw new RuntimeException();
+    }
+
+    private int binarySearch(int[] nums, int left, int right, int tar) {
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] > tar) {
+                right = mid - 1;
+            } else if (nums[mid] < tar) {
+                left = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
     }
 }

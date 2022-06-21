@@ -1,4 +1,4 @@
-package Easy;
+package JzOffer;
 
 import java.util.Scanner;
 

@@ -17,7 +17,7 @@ public class MergeSort {
     }
 
     public static int[] mergeSortForArray(int[] numbs, int left, int right) {//start from ZERO
-        if (left == right) {        //注意这里的细节
+        if (left == right) {        //注意这里的细节，已分解到最小单位
             return new int[]{numbs[left]};
         }
         int mid = (left + right) / 2;

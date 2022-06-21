@@ -1,4 +1,4 @@
-package Hard;
+package JzOffer;
 
 import java.util.HashMap;
 import java.util.Map;

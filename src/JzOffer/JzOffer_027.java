@@ -1,8 +1,8 @@
-package Easy;
+package JzOffer;
 
 public class JzOffer_027 {
     public static void main(String[] args) {
-        //与Interview_02_06一摸一样
+        //锟斤拷Interview_02_06一锟斤拷一锟斤拷
 
     }
 
@@ -24,7 +24,7 @@ public class JzOffer_027 {
     }
 
     public static boolean isPalindrome(ListNode head){
-        //时间复杂度为2n
+        //时锟戒复锟接讹拷为2n
         if (head == null) {
             return true;
         }
@@ -35,7 +35,7 @@ public class JzOffer_027 {
         ListNode ahead = head;
         ListNode half = head;
         int step = 0;
-        while (ahead != null) {             //获取中间指针
+        while (ahead != null) {             //锟斤拷取锟叫硷拷指锟斤拷
             if (step == 2) {
                 half = half.next;
                 step = 0;
