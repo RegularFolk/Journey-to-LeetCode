@@ -1,105 +1,39 @@
 package JzOffer;
 
-import java.util.Scanner;
-
 /*
 打印矩阵  未完成
 */
 public class JzOffer_29 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[][] matrix = new int[n][n];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                matrix[i][j] = sc.nextInt();
+    public int[] spiralOrder(int[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return new int[0];
+        } //通过start、endX和endY三个变量划定边界
+        int start = 0, column = matrix[0].length, row = matrix.length, cursor = 0;
+        int[] ans = new int[column * row];
+        while (column > start * 2 && row > start * 2) {
+            int endX = column - start - 1, endY = row - 1 - start;
+            for (int i = start; i <= endX; i++) {//l to r
+                ans[cursor++] = matrix[start][i];
             }
+            if (start < endY) {
+                for (int i = start + 1; i <= endY; i++) { //up to down
+                    ans[cursor++] = matrix[i][endX];
+                }
+            }
+            if (start < endX && start <= endY) {
+                for (int i = endX - 1; i >= start; i--) { //r to l
+                    ans[cursor++] = matrix[endY][i];
+                }
+            }
+            if (start < endX && start < endY - 1) {
+                for (int i = endY - 1; i >= start + 1; i--) {//down to up
+                    ans[cursor++] = matrix[i][start];
+                }
+            }
+            start++;
         }
-        int count = 0;
-        int[] ans = new int[matrix.length * matrix.length];
-        int dir = 1;
-        //1向右走  2向下走  3向左走  4向上走
-        int x = 0;
-        int y = 0;
-        int[][] map = new int[matrix.length][matrix.length];
-        while (count < matrix.length * matrix.length) {
-            for (; map[y][x] == 0; x++) {//向右走
-                ans[count++] = matrix[y][x];
-                map[y][x] = 1;
-                if (x == matrix.length - 1) {
-                    x--;
-                }
-            }
-            if (count == matrix.length * matrix.length) {
-                break;
-            }
-            for (; map[y][x] == 0; y++) {//向下走
-                ans[count++] = matrix[y][x];
-                map[y][x] = 1;
-                if (y == matrix.length - 1) {
-                    y--;
-                }
-            }
-            if (count == matrix.length * matrix.length) {
-                break;
-            }
-            for (; map[y][x] == 0; x--) {//向左走
-                ans[count++] = matrix[y][x];
-                map[y][x] = 1;
-                if (x == 0) {
-                    x++;
-                }
-            }
-            if (count == matrix.length * matrix.length) {
-                break;
-            }
-            for (; map[y][x] == 0; y--) {//向上走
-                ans[count++] = matrix[y][x];
-                map[y][x] = 1;
-                if (y == 0) {
-                    y++;
-                }
-            }
-            if (count == matrix.length * matrix.length) {
-                break;
-            }
-        }
+        return ans;
     }
 }
 
 
-/*
-            if (dir == 1) {//向右走，变横坐标
-                for (; map[y][x] == 0; x++) {
-                    ans[count] = matrix[y][x];
-                    count++;
-                    map[y][x] = 1;
-                }
-                dir = 2;
-                x--;
-            } else if (dir == 2) {//向下走，变纵坐标
-                for (; map[y][x] == 0; y++) {
-                    ans[count] = matrix[y][x];
-                    count++;
-                    map[y][x] = 1;
-                }
-                dir = 3;
-                y--;
-            } else if (dir == 3) {//向左走，变纵坐标
-                for (; map[y][x] == 0; x--) {
-                    ans[count] = matrix[y][x];
-                    count++;
-                    map[y][x] = 1;
-                }
-                dir = 4;
-                x++;
-            } else if (dir == 4) {//向上走
-                for (; map[y][x] == 0; y--) {
-                    ans[count] = matrix[y][x];
-                    count++;
-                    map[y][x] = 1;
-                }
-                dir = 1;
-                y++;
-            }
-            */

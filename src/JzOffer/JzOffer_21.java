@@ -1,35 +1,33 @@
 package JzOffer;
 
 import java.util.Scanner;
+
 /*
 典型的双指针
 */
 public class JzOffer_21 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] nums = new int[n];
-        for (int i = 0; i < nums.length; i++) {
-            nums[i] = sc.nextInt();
-        }
-        int low = 0;
-        int high = nums.length - 1;
-        int temp ;
-        while (high >= low) {
-            if (nums[high] % 2 == 1) {
-                for (; low <= high; low++) {
-                    if (nums[low] % 2 == 0) {
-                        temp = nums[low];
-                        nums[low] = nums[high];
-                        nums[high] = temp;
-                        break;
-                    }
+
+    public int[] exchange(int[] nums) {
+        if (nums != null && nums.length >= 2) {
+            int l = 0, r = nums.length - 1;
+            while (l < r) {
+                while (l < nums.length && (nums[l] & 1) == 1) { //左指针找一个偶数
+                    l++;
+                }
+                while (r >= 0 && (nums[r] & 1) == 0) { //右指针找一个奇数
+                    r--;
+                }
+                if (l < r) {
+                    swap(nums, l, r);
                 }
             }
-            high--;
         }
-        for (int num : nums) {
-            System.out.println(num);
-        }
+        return nums;
+    }
+
+    private void swap(int[] nums, int l, int r) {
+        int temp = nums[l];
+        nums[l] = nums[r];
+        nums[r] = temp;
     }
 }

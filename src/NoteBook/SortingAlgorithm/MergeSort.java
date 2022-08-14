@@ -1,5 +1,7 @@
 package NoteBook.SortingAlgorithm;
 
+import DataStructure.ListNode;
+
 import java.util.Scanner;
 
 public class MergeSort {
@@ -51,23 +53,6 @@ public class MergeSort {
             }
         }
         return tempArray;
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
     }
 
     public static ListNode mergeSortForLinkedList(ListNode head) {
