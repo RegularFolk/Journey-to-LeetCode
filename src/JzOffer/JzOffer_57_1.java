@@ -1,6 +1,6 @@
 package JzOffer;
 
-public class JzOffer_57 {
+public class JzOffer_57_1 {
     public int[] twoSum1(int[] nums, int target) {  //二分查找  时间复杂度nlogn
         if (nums.length < 2) {
             return new int[2];
