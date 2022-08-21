@@ -1,4 +1,4 @@
-package Medium;
+package CrackCodeInterview;
 
 import java.util.ArrayList;
 import java.util.List;

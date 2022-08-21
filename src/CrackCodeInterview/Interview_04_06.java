@@ -1,22 +1,11 @@
-package Medium;
+package CrackCodeInterview;
+
+import DataStructure.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Interview_04_06 {
-    boolean flag = false;
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
-
 
     public TreeNode inorderSuccessor1(TreeNode root, TreeNode p) {  //法一，利用递归，找到第一个大于p的节点，再进行核对
         if (root == null) return null;
