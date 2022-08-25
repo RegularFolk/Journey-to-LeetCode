@@ -1,17 +1,10 @@
 package Easy;
 
+import DataStructure.ListNode;
+
 public class LC_237 {
     public static void main(String[] args) {
-        //ÄæÌìÌâ
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     public static void deleteNode(ListNode node) {

@@ -1,5 +1,7 @@
 package Medium;
 
+import DataStructure.ListNode;
+
 import java.util.List;
 
 public class LC_24 {
@@ -7,24 +9,7 @@ public class LC_24 {
 
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
-    public static ListNode swapPairs(ListNode head) {  //´©ÕëÒýÏß£¬Ö¯Ã«ÒÂ
+    public static ListNode swapPairs(ListNode head) {  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½Ö¯Ã«ï¿½ï¿½
         if (head == null || head.next == null) {
             return head;
         }
@@ -33,18 +18,18 @@ public class LC_24 {
         ListNode right = head.next;
         ListNode temp;
         while (left != null && right != null) {
-            if (before == left) {  //Í·Á½¸ö½Úµã
+            if (before == left) {  //Í·ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
                 left.next = right.next;
                 right.next = left;
-                head = right;    //Í·ÒªÖ¸ÏòÁ´±í¸üÐÂºóµÄÍ·½Úµã
-                //before ÔÚµÚÒ»´Î±ä»»Íê²»ÓÃ¶¯£¬Ð¡Ï¸½Ú£¡
+                head = right;    //Í·ÒªÖ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âºï¿½ï¿½Í·ï¿½Úµï¿½
+                //before ï¿½Úµï¿½Ò»ï¿½Î±ä»»ï¿½ê²»ï¿½Ã¶ï¿½ï¿½ï¿½Ð¡Ï¸ï¿½Ú£ï¿½
             } else {
                 before.next = right;
                 left.next = right.next;
                 right.next = left;
                 before = before.next.next;
             }
-            temp = right;  //½»»»Ö®ºó×óÓÒÖ¸Õë»á±ä³ÉÓÒ×óÖ¸Õë£¬ÐèÒª»»»ØÀ´
+            temp = right;  //ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ë£¬ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             right = left;
             left = temp;
             if (right.next != null) {

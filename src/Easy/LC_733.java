@@ -1,6 +1,6 @@
 package Easy;
 
-import CrackCodeInterview.Interview_08_10;
+import CrackCodeInterview.VIII_DanymicPlanning.Interview_08_10;
 
 public class LC_733 {
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {

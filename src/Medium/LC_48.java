@@ -1,6 +1,6 @@
 package Medium;
 
-import CrackCodeInterview.Interview_01_07;
+import CrackCodeInterview.I_Array_String.Interview_01_07;
 
 public class LC_48 {
 

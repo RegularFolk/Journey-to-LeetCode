@@ -1,18 +1,10 @@
 package Easy;
 
+import DataStructure.ListNode;
+
 public class LC_141 {
     public static void main(String[] args) {
 
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
     }
 
     public static boolean hasCycle(ListNode head) {

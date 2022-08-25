@@ -1,26 +1,11 @@
 package Easy;
 
+import DataStructure.ListNode;
+
 public class LC_234 {
     public static void main(String[] args) {
         //??Interview_02_06??????
 
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
     }
 
     public static boolean isPalindrome(ListNode head){

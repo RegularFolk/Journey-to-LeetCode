@@ -1,37 +1,22 @@
 package Medium;
 
+import DataStructure.ListNode;
+
 public class LC_2 {
     public static void main(String[] args) {
 
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode head = new ListNode();
-        ListNode cursor = head; //ÓÎ±ê£¬ÓÃÓÚÍùºó´´½¨
+        ListNode cursor = head; //ï¿½Î±ê£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó´´½ï¿½
         ListNode cursor1 = l1;
         ListNode cursor2 = l2;
-        boolean flag1 = false;  //ÓÃÓÚ·Ö±æÁ½ÌõÁ´±íÊÇ·ñµ½Í·
+        boolean flag1 = false;  //ï¿½ï¿½ï¿½Ú·Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Í·
         boolean flag2 = false;
-        boolean flag = false;  //½øÎ»±êÊ¶
-        boolean fir = true;   //´¦ÀíÍ·½Úµã
-        int sum;               //ÇóºÍ
+        boolean flag = false;  //ï¿½ï¿½Î»ï¿½ï¿½Ê¶
+        boolean fir = true;   //ï¿½ï¿½ï¿½ï¿½Í·ï¿½Úµï¿½
+        int sum;               //ï¿½ï¿½ï¿½
         while (!flag1 || !flag2) {
             if (flag1) {
                 sum = cursor2.val;
@@ -40,10 +25,10 @@ public class LC_2 {
             } else {
                 sum = cursor1.val + cursor2.val;
             }
-            if (flag) {              //ÉÏÒ»´Î¼Ó²úÉúÁË½øÎ»
+            if (flag) {              //ï¿½ï¿½Ò»ï¿½Î¼Ó²ï¿½ï¿½ï¿½ï¿½Ë½ï¿½Î»
                 sum++;
             }
-            if (fir) {     //µÚÒ»´ÎÏà¼Ó
+            if (fir) {     //ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
                 head.val = sum % 10;
                 fir = false;
             } else {
@@ -64,7 +49,7 @@ public class LC_2 {
                 cursor2 = cursor2.next;
             }
         }
-        if (flag) { //Èç¹û×îºóÒ»¸ö»¹Ê£ÏÂÒ»¸ö½øÎ»Ã»ÓÐ´¦Àí£¬ÔÙÔÚºóÃæ¼ÓÒ»¸ö½Úµã
+        if (flag) { //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Î»Ã»ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úºï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½
             cursor.next = new ListNode(1);
         }
         return head;

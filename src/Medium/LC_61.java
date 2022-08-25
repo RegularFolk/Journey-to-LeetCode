@@ -1,26 +1,11 @@
 package Medium;
 
+import DataStructure.ListNode;
+
 public class LC_61 {
     public static void main(String[] args) {
         ListNode head = new ListNode(0, new ListNode(1, new ListNode(2)));
         System.out.println(rotateRight(head, 4));
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
     }
 
     public static ListNode rotateRight(ListNode head, int k) {

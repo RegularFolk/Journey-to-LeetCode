@@ -1,29 +1,14 @@
 package Medium;
 
+import DataStructure.ListNode;
+
 public class LC_19 {
     public static void main(String[] args) {
 
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
     public static ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummy = new ListNode(0, head); //Ð¡¼¼ÇÉ£¬ÉèÖÃdummyÖ¸ÏòÍ·Ö¸ÕëÖ®Ç°£¬Ó¦¶ÔÁ´±í³¤¶ÈÎª1µÄÌØÊâÇé¿ö
+        ListNode dummy = new ListNode(0, head); //Ð¡ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½ï¿½ï¿½dummyÖ¸ï¿½ï¿½Í·Ö¸ï¿½ï¿½Ö®Ç°ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ListNode cursor = dummy;
         int total = 0;
         while (head != null) {
@@ -38,12 +23,12 @@ public class LC_19 {
     }
 
     public static ListNode removeNthFromEnd2(ListNode head, int n) {
-        //Ê¹ÓÃ¿ìÂýÖ¸Õë£¬Ò»´Î±éÀúÍê³É
+        //Ê¹ï¿½Ã¿ï¿½ï¿½ï¿½Ö¸ï¿½ë£¬Ò»ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ListNode dummy = new ListNode(0, head);
         ListNode quickCursor = dummy;
         ListNode slowCursor = dummy;
         int step = 0;
-        while (step < n && quickCursor.next != null) {  //¿ìÖ¸ÕëÏÈ×ßn²½
+        while (step < n && quickCursor.next != null) {  //ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nï¿½ï¿½
             quickCursor = quickCursor.next;
             step++;
         }

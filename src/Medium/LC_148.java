@@ -1,27 +1,12 @@
 package Medium;
 
 
+import DataStructure.ListNode;
+
 public class LC_148 {
     public static void main(String[] args) {
-        //Á´±íµÄ¹é²¢ÅÅÐò
+        //ï¿½ï¿½ï¿½ï¿½Ä¹é²¢ï¿½ï¿½ï¿½ï¿½
 
-    }
-
-    public static class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
     }
 
     public static ListNode sortList(ListNode head) {
@@ -29,21 +14,21 @@ public class LC_148 {
             return head;
         }
         ListNode dummy = new ListNode(0, head);
-        //Ê×ÏÈÑ°ÕÒÁ´±íµÄÖÐ¼ä½Úµã
+        //ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½Úµï¿½
         ListNode slowCursor = dummy;
         ListNode quickCursor = dummy;
         while (quickCursor != null && quickCursor.next != null) {
             quickCursor = quickCursor.next.next;
             slowCursor = slowCursor.next;
-        }           //slowCursor»áÖ¸ÏòÖÐ¼ä½Úµã
+        }           //slowCursorï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ð¼ï¿½Úµï¿½
 
-        //Í¨¹ýµÝ¹é½«Ò»ÌõÁ´±í²»¶Ï²ð·Ö³ÉÒ»¶ÎÒ»¶ÎËéÆ¬½Úµã
+        //Í¨ï¿½ï¿½ï¿½Ý¹é½«Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï²ï¿½Ö³ï¿½Ò»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Æ¬ï¿½Úµï¿½
         ListNode right = sortList(slowCursor.next);
-        slowCursor.next = null;//ÕâÀï½«Á´±í¶Ï¿ªÁË
+        slowCursor.next = null;//ï¿½ï¿½ï¿½ï½«ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½
         ListNode left = sortList(head);
 
-        //½ÓÏÂÀ´ÒªºÏ²¢²ð·ÖµôµÄ×óÓÒ½Úµã
-        ListNode tempHead = new ListNode(0);  //ÀûÓÃtempHead×öÁÙÊ±Í·½Úµã£¬½«¶Ï¿ªµÄ½ÚµãÖØÐÂ×éºÏ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ï²ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò½Úµï¿½
+        ListNode tempHead = new ListNode(0);  //ï¿½ï¿½ï¿½ï¿½tempHeadï¿½ï¿½ï¿½ï¿½Ê±Í·ï¿½Úµã£¬ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½Ä½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         ListNode cursor = tempHead;
         while (left != null && right != null) {
             if (left.val < right.val) {
@@ -55,7 +40,7 @@ public class LC_148 {
             }
             cursor = cursor.next;
         }
-        //½ÓÏÂÀ´»¹Òª½«×óÓÒÃ»±ÈÍêµÄÒ»Ìõ¼ÒÔÚºóÃæ
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Úºï¿½ï¿½ï¿½
         if (left == null) {
             cursor.next = right;
         } else {
@@ -65,20 +50,20 @@ public class LC_148 {
     }
 
     public static int[] mergeSort(int[] numbs, int left, int right) {
-        if (left == right)  //Ö»ÓÐÒ»¸öÔªËØ
+        if (left == right)  //Ö»ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½ï¿½
             return new int[]{numbs[left]};
 
-        int mid = left + (right - left) / 2;                            //ÕÒÖÐµã
-        int[] leftArr = mergeSort(numbs, left, mid);                   //×óÓÐÐòÊý×é
-        int[] rightArr = mergeSort(numbs, mid + 1, right);        //ÓÒÓÐÐòÊý×é
-        int[] newNum = new int[leftArr.length + rightArr.length];     //ÐÂÓÐÐòÊý×é,³¤¶ÈÎªÖ®Ç°ÅÅºÃÐòµÄ×óÓÒ¼ÓÆðÀ´
+        int mid = left + (right - left) / 2;                            //ï¿½ï¿½ï¿½Ðµï¿½
+        int[] leftArr = mergeSort(numbs, left, mid);                   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        int[] rightArr = mergeSort(numbs, mid + 1, right);        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        int[] newNum = new int[leftArr.length + rightArr.length];     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ÎªÖ®Ç°ï¿½Åºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½ï¿½ï¿½ï¿½
 
         int m = 0, leftCursor = 0, rightCursor = 0;
         while (leftCursor < leftArr.length && rightCursor < rightArr.length) {
             newNum[m++] = leftArr[leftCursor] < rightArr[rightCursor] ? leftArr[leftCursor++] : rightArr[rightCursor++];
-            //ÐÂÊý×éµÄÏÂÒ»¸öÎ»ÖÃÈ¡×óÓÒÊý×éµ±Ç°Ö¸×ÅµÄÔªËØµÄ½ÏÐ¡Öµ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Î»ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½éµ±Ç°Ö¸ï¿½Åµï¿½Ôªï¿½ØµÄ½ï¿½Ð¡Öµ
         }
-        //±ÈÍêÁË°Ñ»¹ÓÐÒ»±ßÊ£ÏÂµÄ¼ÓÔÚÐÂµÄÊý×éÄ©Î²
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ë°Ñ»ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê£ï¿½ÂµÄ¼ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½Ä©Î²
         while (leftCursor < leftArr.length)
             newNum[m++] = leftArr[leftCursor++];
         while (rightCursor < rightArr.length)
