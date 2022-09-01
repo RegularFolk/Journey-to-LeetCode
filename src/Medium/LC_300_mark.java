@@ -35,7 +35,7 @@ public class LC_300_mark {
         for (int num : nums) {
             if (num > dp[ans]) {
                 dp[++ans] = num;
-            } else {//二分查找
+            } else {//二分查找，找小于当前值的最大值
                 int l = 1, r = ans, pos = 0;
                 while (l <= r) {
                     int mid = (l + r) >> 1;

@@ -1,25 +1,8 @@
 package Easy;
 
+import DataStructure.TreeNode;
+
 public class LC_965 {
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
     public boolean isUnivalTree(TreeNode root) {
         int tar = root.val;
         return travel(root, tar);

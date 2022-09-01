@@ -1,25 +1,8 @@
 package Medium;
 
+import DataStructure.TreeNode;
+
 public class LC_450 {
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
     //将待删除节点替换成左子树的最大值或者右子树的最小值,此处选择右子树的最小值
     public TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {
@@ -55,7 +38,7 @@ public class LC_450 {
         if (root==null||(root.left == null && root.right == null && root.val == key)) {
             return null;
         }
-        TreeNode cur = root, father = new TreeNode();
+        TreeNode cur = root, father = new TreeNode(0);
         boolean left = true;
         while (cur != null && cur.val != key) {
             int val = cur.val;

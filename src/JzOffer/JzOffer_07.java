@@ -3,6 +3,9 @@ package JzOffer;
 import DataStructure.TreeNode;
 
 public class JzOffer_07 {
+    /*
+    * 维护四个量:preStart,preEnd,inStart,inEnd
+    * */
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         if (preorder == null || preorder.length == 0 || inorder == null || inorder.length == 0) {
             return null;

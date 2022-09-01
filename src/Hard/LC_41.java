@@ -1,11 +1,10 @@
 package Hard;
 
 public class LC_41 {
-    public static void main(String[] args) {
-        //原地哈希
-        System.out.println(firstMissingPositive(new int[]{3, 4, -1, 1}));
-    }
 
+    /*
+    * 原地哈希
+    * */
     public static int firstMissingPositive(int[] numbs) {
         for (int i = 0; i < numbs.length; i++) {
             while (numbs[i] >= 1 && numbs[i] <= numbs.length && numbs[numbs[i] - 1] != numbs[i]) {

@@ -1,22 +1,8 @@
 package Medium;
 
+import DataStructure.TreeNode;
+
 public class LC_449 {
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-
-        TreeNode(int x, TreeNode left, TreeNode right) {
-            val = x;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     //采用中序遍历
     // Encodes a tree to a single string.

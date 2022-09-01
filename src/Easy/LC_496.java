@@ -1,49 +1,28 @@
 package Easy;
 
-
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
 
 public class LC_496 {
-    public static void main(String[] args) {//Unsolved
-        Scanner sc = new Scanner(System.in);
-        int n1 = sc.nextInt();
-        int n2 = sc.nextInt();
-        int[] nums1 = new int[n1];
-        int[] nums2 = new int[n2];
-        for (int i : nextGreaterElement(nums1, nums2)) {
-            System.out.println(i);
-        }
-    }
 
+    /*
+     * 单调栈简单应用
+     * 先对nums2跑一遍建立散列表，然后按照nums1填入ans中
+     * */
     public static int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        int mark = 0;
-        int count = 0;
-        int[] output = new int[nums1.length];
-        System.arraycopy(nums1, 0, output, 0, nums1.length);
+        int[] ans = new int[nums1.length];
+        Map<Integer, Integer> map = new HashMap<>();
+        Stack<Integer> stack = new Stack<>();
         for (int i : nums2) {
-            for (int j : nums1) {
-                if (i == j) {
-                    break;
-                }
+            while (!stack.isEmpty() && stack.peek() < i) {
+                map.put(stack.pop(), i);
             }
-            mark++;
-        }
-        for (int i = mark + 1; i < nums2.length; i++) {
-            for (int j = 0; j < nums1.length; j++) {
-                if (output[j] == nums1[j] && nums2[i] > output[j]) {
-                    output[j] = nums2[i];
-                    count++;
-                }
-            }
-            if (count == nums1.length) {
-                break;
-            }
+            stack.push(i);
         }
         for (int i = 0; i < nums1.length; i++) {
-            if (output[i] == nums1[i]) {
-                output[i] = -1;
-            }
+            ans[i] = map.getOrDefault(nums1[i], -1);
         }
-        return output;
+        return ans;
     }
 }

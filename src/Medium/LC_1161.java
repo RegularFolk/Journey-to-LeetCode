@@ -1,32 +1,12 @@
 package Medium;
 
+import DataStructure.TreeNode;
+
 import java.util.AbstractQueue;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class LC_1161 {
-    public static void main(String[] args) {
-
-    }
-
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     public static int maxLevelSum(TreeNode root) {
         Queue<TreeNode> queue = new ArrayDeque<>();

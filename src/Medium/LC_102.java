@@ -1,34 +1,15 @@
 package Medium;
 
+import DataStructure.TreeNode;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class LC_102 {
-    public static void main(String[] args) {
-//二叉树的层序遍历
-    }
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
+    //二叉树的层序遍历
     public static List<List<Integer>> levelOrder(TreeNode root) {
         int count = 1;
         int temp;
