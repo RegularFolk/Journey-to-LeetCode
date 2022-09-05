@@ -5,40 +5,23 @@ import DataStructure.ListNode;
 import java.util.List;
 
 public class LC_24 {
-    public static void main(String[] args) {
 
-    }
-
-    public static ListNode swapPairs(ListNode head) {  //�������ߣ�֯ë��
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode before = head;
-        ListNode left = head;
-        ListNode right = head.next;
-        ListNode temp;
-        while (left != null && right != null) {
-            if (before == left) {  //ͷ�����ڵ�
-                left.next = right.next;
-                right.next = left;
-                head = right;    //ͷҪָ��������º��ͷ�ڵ�
-                //before �ڵ�һ�α任�겻�ö���Сϸ�ڣ�
-            } else {
-                before.next = right;
-                left.next = right.next;
-                right.next = left;
-                before = before.next.next;
+    /*
+     * 链表翻转的变换
+     * */
+    public static ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode dummy = new ListNode(0), cur1 = head, cur2 = head.next, prev = dummy;
+        while (cur1 != null && cur2 != null) {
+            prev.next = cur2;
+            cur1.next = cur2.next;
+            cur2.next = cur1;
+            prev = cur1;
+            cur1 = cur1.next;
+            if (cur1 != null) {
+                cur2 = cur1.next;
             }
-            temp = right;  //����֮������ָ���������ָ�룬��Ҫ������
-            right = left;
-            left = temp;
-            if (right.next != null) {
-                right = right.next.next;
-            } else {
-                break;
-            }
-            left = left.next.next;
         }
-        return head;
+        return dummy.next;
     }
 }

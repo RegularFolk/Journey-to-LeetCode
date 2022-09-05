@@ -29,6 +29,9 @@ public class JzOffer_59_1 {
         }
     }
 
+    /*
+    * 单调队列模板题，同Hard LC_239
+    * */
     public int[] maxSlidingWindow2(int[] nums, int k) {   //维护一个单调队列，仅储存可能的最大值
         int[] ans = new int[nums.length - k + 1];
         LinkedList<Integer> list = new LinkedList<>();

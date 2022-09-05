@@ -1,18 +1,6 @@
 package Easy;
 
-import java.util.Scanner;
-
 public class LC_844 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String s = sc.nextLine();
-        String t = sc.nextLine();
-        if (backspaceCompare(s, t)) {
-            System.out.println("TRUE");
-        } else {
-            System.out.println("FALSE");
-        }
-    }
 
     public static boolean backspaceCompare(String s, String t) {
         char[] stackS = new char[s.length()];

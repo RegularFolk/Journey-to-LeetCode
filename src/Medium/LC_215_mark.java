@@ -46,7 +46,7 @@ public class LC_215_mark {
     private int partition(int[] nums, int left, int right) {
         int l = left + 1, r = right;
         while (l < r) {
-            while (l <= right && nums[l] <= nums[left]) l++;
+            while (l < right && nums[l] <= nums[left]) l++;
             while (r > left && nums[r] > nums[left]) r--;
             if (r > l) {
                 swap(nums, l, r);
