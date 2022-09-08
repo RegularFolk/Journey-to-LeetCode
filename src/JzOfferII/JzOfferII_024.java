@@ -2,7 +2,7 @@ package JzOfferII;
 
 import DataStructure.ListNode;
 
-public class JzOfferII_24 {
+public class JzOfferII_024 {
     /*
      * 反转链表的简单写法
      * */

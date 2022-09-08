@@ -34,7 +34,10 @@ public class LC_513 {
         return ans;
     }
 
-    public int findBottomLeftValue1(TreeNode root) { //深度优先搜索，优先遍历左子树，右子树只有当深度大于最大时才会被更新
+    /*
+    * 带条件的dfs，当深度大于旧的深度时才会更新
+    * */
+    public int findBottomLeftValue1(TreeNode root) {
         dfs(root, 1);
         return ans;
     }
