@@ -1,11 +1,8 @@
 package Medium;
 
 public class LC_56 {
-    public static void main(String[] args) {
 
-    }
-
-    public static int[][] merge(int[][] intervals) {
+    public int[][] merge(int[][] intervals) {
         quickSort(intervals, 0, intervals.length - 1);
         int n = 1;
         int[][] ans = new int[intervals.length][2];
@@ -24,7 +21,7 @@ public class LC_56 {
         return output;
     }
 
-    public static void quickSort(int[][] intervals, int left, int right) {
+    public void quickSort(int[][] intervals, int left, int right) {
         int[] temp;
         int leftCursor = left;
         int rightCursor = right;

@@ -7,6 +7,7 @@ import java.util.Stack;
 public class LC_42 {
     /*
      * 单调栈的应用，栈中存储下标
+     * 从栈底至栈顶单调递减
      * 需要连续在栈中取两个，有点抽象
      * */
     public int trap(int[] height) {

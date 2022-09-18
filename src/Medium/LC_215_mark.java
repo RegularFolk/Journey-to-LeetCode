@@ -52,7 +52,7 @@ public class LC_215_mark {
                 swap(nums, l, r);
             }
         }
-        if (nums[r] <= nums[left]) {
+        if (nums[r] <= nums[left]) {//这个判断处理只有两个有序元素的情况，例如[5,6]，若不加判断会把5,6交换
             swap(nums, left, r);
             return r;
         } else {
