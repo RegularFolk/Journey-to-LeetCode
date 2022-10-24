@@ -1,0 +1,19 @@
+package Leet.Easy;
+
+public class LC_944 {
+    public int minDeletionSize(String[] strs) {
+        int ans = 0, len = strs[0].length();
+        if (strs.length <= 1) {
+            return 0;
+        }
+        for (int i = 0; i < len; i++) {
+            for (int j = 1; j < strs.length; j++) {
+                if (strs[j].charAt(i) <= strs[j - 1].charAt(i)) {
+                    ans++;
+                    break;
+                }
+            }
+        }
+        return ans;
+    }
+}

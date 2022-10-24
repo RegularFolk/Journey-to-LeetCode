@@ -21,7 +21,7 @@ public class QuickSort {
     }
 
     private void quickSort(int[] numbs, int left, int right) { //迭代版
-        int temp;                                    //temp用于交换
+        /*int temp;                                    //temp用于交换
         int leftCursor = left;
         int rightCursor = right;
         int pivot = numbs[(left + right) / 2];         //哨兵设置为当前比较的数组的中间值
@@ -47,6 +47,17 @@ public class QuickSort {
         }
         if (leftCursor < right) {
             quickSort(numbs, leftCursor, right);
+        }*/
+        if (left < right) {
+            long pivot = numbs[left];
+            int l = left - 1, r = right + 1;//先后退一步是为了适配do
+            while (l < r) {
+                do l++; while (numbs[l] < pivot);
+                do r--; while (numbs[r] > pivot);
+                if (l < r) swap(numbs, l, r);
+            }
+            quickSort(numbs, left, r);
+            quickSort(numbs, r + 1, right);
         }
     }
 
