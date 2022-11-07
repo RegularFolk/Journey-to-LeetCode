@@ -42,7 +42,7 @@ public class AW_789 {
         int[] ints = AWUtils.intsInput();
         int n = ints[0], q = ints[1];
         int[] arr = AWUtils.intArrayInput(n);
-        int[] queries = AWUtils.intsInputLineByLine(q);
+        int[] queries = AWUtils.intsInputByLine(q);
         int[][] ans = new int[q][2];
         for (int i = 0; i < queries.length; i++) {
             ans[i][0] = findLeft(arr, queries[i]);

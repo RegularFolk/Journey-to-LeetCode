@@ -1,7 +1,7 @@
 package JzOffer.JzOffer_II;
 
 import DataStructure.TreeNode;
-import Leet.Medium.LC_515;
+import LeetCode.Medium.LC_515;
 
 import java.util.List;
 

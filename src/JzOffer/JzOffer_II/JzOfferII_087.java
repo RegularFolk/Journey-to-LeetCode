@@ -1,6 +1,6 @@
 package JzOffer.JzOffer_II;
 
-import Leet.Medium.LC_93;
+import LeetCode.Medium.LC_93;
 
 import java.util.LinkedList;
 import java.util.List;

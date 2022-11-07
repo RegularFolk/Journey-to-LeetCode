@@ -1,7 +1,7 @@
 package JzOffer.JzOffer_II;
 
 import DataStructure.TreeNode;
-import Leet.Medium.LC_513;
+import LeetCode.Medium.LC_513;
 
 public class JzOfferII_045 {
     /*

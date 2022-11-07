@@ -1,12 +1,12 @@
 package AcWing.util;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.*;
 
 public class AWUtils {
 
     static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    static final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 
     /**
      * 一行一个int
@@ -18,8 +18,9 @@ public class AWUtils {
             return Integer.parseInt(reader.readLine());
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException("输入失败！");
         }
-        return -1;
+
     }
 
     /**
@@ -32,8 +33,9 @@ public class AWUtils {
             return Long.parseLong(reader.readLine());
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException("输入失败！");
         }
-        return -1;
+
     }
 
     /**
@@ -46,8 +48,9 @@ public class AWUtils {
             return Float.parseFloat(reader.readLine());
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException("输入失败！");
         }
-        return -1;
+
     }
 
     /**
@@ -60,8 +63,22 @@ public class AWUtils {
             return Double.parseDouble(reader.readLine());
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException("输入失败！");
         }
-        return -1;
+    }
+
+    /**
+     * 一行输入一个String
+     *
+     * @return 输入的String
+     */
+    public static String stringInput() {
+        try {
+            return reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("字符串输入失败！");
+        }
     }
 
     /**
@@ -70,7 +87,7 @@ public class AWUtils {
      * @return 输入的int的数组
      */
     public static int[] intsInput() {
-        int[] arr = null;
+        int[] arr;
         String[] strs;
         try {
             strs = reader.readLine().split(" ");
@@ -78,10 +95,26 @@ public class AWUtils {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = Integer.parseInt(strs[i]);
             }
+            return arr;
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException("输入失败！");
         }
-        return arr;
+
+    }
+
+    /**
+     * 一行内输入多个int，输入多行
+     *
+     * @param n 行数
+     * @return 输入的int二维数组
+     */
+    public static int[][] intsArrayInput(int n) {
+        int[][] arrs = new int[n][];
+        for (int i = 0; i < n; i++) {
+            arrs[i] = intsInput();
+        }
+        return arrs;
     }
 
     /**
@@ -90,17 +123,18 @@ public class AWUtils {
      * @param n 一共有几行
      * @return 输入的int数组
      */
-    public static int[] intsInputLineByLine(int n) {
-        int[] arr = null;
+    public static int[] intsInputByLine(int n) {
+        int[] arr;
         try {
             arr = new int[n];
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = Integer.parseInt(reader.readLine());
             }
+            return arr;
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException("输入失败！");
         }
-        return arr;
     }
 
     /**
@@ -110,19 +144,18 @@ public class AWUtils {
      * @return 输入的数组
      */
     public static int[] intArrayInput(int len) {
-        int[] arr = new int[len];
-        if (len > 0) {
-            String[] strs = new String[0];
-            try {
-                strs = reader.readLine().split(" ");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            int[] arr = new int[len];
+            String[] strs;
+            strs = reader.readLine().split(" ");
             for (int i = 0; i < len; i++) {
                 arr[i] = Integer.parseInt(strs[i]);
             }
+            return arr;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("输入失败！");
         }
-        return arr;
     }
 
     /**
@@ -132,20 +165,39 @@ public class AWUtils {
      * @return 输入的数组
      */
     public static long[] longArrayInput(int len) {
-        long[] arr = new long[len];
-        if (len > 0) {
-            String[] strs = new String[0];
-            try {
-                strs = reader.readLine().split(" ");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            long[] arr = new long[len];
+            String[] strs;
+            strs = reader.readLine().split(" ");
             for (int i = 0; i < len; i++) {
                 arr[i] = Integer.parseInt(strs[i]);
             }
+            return arr;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("输入失败！");
         }
-        return arr;
     }
+
+    /**
+     * 分行输入String数组
+     *
+     * @param len 数组长度
+     * @return 输入的String数组
+     */
+    public static String[] stringArrayInput(int len) {
+        try {
+            String[] input = new String[len];
+            for (int i = 0; i < input.length; i++) {
+                input[i] = reader.readLine();
+            }
+            return input;
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+    }
+
 
     /**
      * 一行内输出int数组
@@ -153,10 +205,33 @@ public class AWUtils {
      * @param ints 要输出的数组
      */
     public static void printArrayInline(int[] ints) {
-        if (ints != null) {
-            for (int anInt : ints) {
-                System.out.print(anInt + " ");
+        try {
+            if (ints != null) {
+                for (int anInt : ints) {
+                    writer.write(anInt + " ");
+                    writer.flush();
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 逐行输出int数组
+     *
+     * @param ints 需要输出的int数组
+     */
+    public static void printArrayByLine(int[] ints) {
+        try {
+            if (ints != null) {
+                for (int anInt : ints) {
+                    writer.write(anInt + "\n");
+                }
+                writer.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -166,10 +241,15 @@ public class AWUtils {
      * @param chars 要输出的数组
      */
     public static void printArrayInline(char[] chars) {
-        if (chars != null) {
-            for (char c : chars) {
-                System.out.print(c + " ");
+        try {
+            if (chars != null) {
+                for (char c : chars) {
+                    writer.write(c + " ");
+                }
+                writer.flush();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -179,10 +259,15 @@ public class AWUtils {
      * @param longs 要输出的数组
      */
     public static void printArrayInline(long[] longs) {
-        if (longs != null) {
-            for (long l : longs) {
-                System.out.print(l + " ");
+        try {
+            if (longs != null) {
+                for (long l : longs) {
+                    writer.write(l + " ");
+                }
+                writer.flush();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -192,10 +277,15 @@ public class AWUtils {
      * @param strings 要输出的数组
      */
     public static void printArrayInline(String[] strings) {
-        if (strings != null) {
-            for (String s : strings) {
-                System.out.print(s + " ");
+        try {
+            if (strings != null) {
+                for (String s : strings) {
+                    writer.write(s + " ");
+                }
+                writer.flush();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -204,11 +294,17 @@ public class AWUtils {
      *
      * @param strings 要输出的数组
      */
-    public static void printArrayLineByLine(String[] strings) {
-        if (strings != null) {
-            for (String s : strings) {
-                System.out.println(s + " ");
+    public static void printArrayByLine(String[] strings) {
+        try {
+            if (strings != null) {
+                for (String s : strings) {
+                    writer.write(s);
+                    writer.newLine();
+                }
+                writer.flush();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -221,6 +317,38 @@ public class AWUtils {
         for (int[] ints : arr) {
             printArrayInline(ints);
             System.out.println();
+        }
+    }
+
+    /**
+     * 一行内打印list
+     *
+     * @param list 需要打印的list
+     */
+    public static void printListInLint(List<?> list) {
+        try {
+            for (Object o : list) {
+                writer.write(o + " ");
+            }
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 逐行打印list
+     *
+     * @param list 需要打印的list
+     */
+    public static void printListByLine(List<?> list) {
+        try {
+            for (Object o : list) {
+                writer.write(o + "\n");
+            }
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

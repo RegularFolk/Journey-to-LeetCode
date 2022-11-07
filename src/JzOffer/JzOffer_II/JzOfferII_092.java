@@ -1,6 +1,6 @@
 package JzOffer.JzOffer_II;
 
-import Leet.Medium.LC_926;
+import LeetCode.Medium.LC_926;
 
 public class JzOfferII_092 {
     /*

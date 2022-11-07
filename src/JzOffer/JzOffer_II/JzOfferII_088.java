@@ -1,6 +1,6 @@
 package JzOffer.JzOffer_II;
 
-import Leet.Easy.LC_746;
+import LeetCode.Easy.LC_746;
 
 public class JzOfferII_088 {
     /*
