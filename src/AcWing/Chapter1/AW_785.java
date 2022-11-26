@@ -33,6 +33,7 @@ public class AW_785 {
         AWUtils.printArrayInline(arrays);
     }
 
+    //¿ìËÙÅÅĞò
     private static void qSort(long[] arrays, int left, int right) {
         if (left < right) {
             long pivot = arrays[left];

@@ -8,6 +8,8 @@ public class Node {
     public Node left;
     public Node right;
     public Node random;
+    public Node child;
+    public Node prev;
     public List<Node> children;
 
     public Node() {

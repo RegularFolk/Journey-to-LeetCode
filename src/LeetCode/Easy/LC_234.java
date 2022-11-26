@@ -3,13 +3,8 @@ package LeetCode.Easy;
 import DataStructure.ListNode;
 
 public class LC_234 {
-    public static void main(String[] args) {
-        //??Interview_02_06??????
 
-    }
-
-    public static boolean isPalindrome(ListNode head){
-        //??มู????2n
+    public  boolean isPalindrome(ListNode head){
         if (head == null) {
             return true;
         }
@@ -20,7 +15,7 @@ public class LC_234 {
         ListNode ahead = head;
         ListNode half = head;
         int step = 0;
-        while (ahead != null) {             //????งÞ????
+        while (ahead != null) {
             if (step == 2) {
                 half = half.next;
                 step = 0;

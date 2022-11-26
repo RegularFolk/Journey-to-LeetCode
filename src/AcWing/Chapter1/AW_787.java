@@ -34,6 +34,7 @@ public class AW_787 {
         AWUtils.printArrayInline(arr);
     }
 
+    //¹é²¢ÅÅÐò
     private static void mergeSort(long[] arr, long[] temp, int left, int right) {
         if (left >= right) return;
         int mid = (left + right) >> 1;

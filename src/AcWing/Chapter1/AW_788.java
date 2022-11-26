@@ -26,6 +26,7 @@ import AcWing.util.AWUtils;
     5
 * */
 //归并排序，每次后面摆到前面就计数
+@SuppressWarnings("DuplicatedCode")
 public class AW_788 {
     static long ans = 0;
 
