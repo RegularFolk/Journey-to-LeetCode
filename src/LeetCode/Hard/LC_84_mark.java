@@ -18,6 +18,8 @@ public class LC_84_mark {
         for (int i = 0; i < heights.length; i++) {
             while (!stack.isEmpty() && heights[i] < heights[stack.peek()]) {
                 max = Math.max(max, heights[stack.pop()] * (i - stack.peek() - 1));
+                //                  heights[stack.pop()]为当前拿来当高的木块的高度
+                //                  i - stack.peek() - 1 当前拿来当高的木块的左边一个元素是左边第一个比他矮的，当前的i是右边第一个比它矮的
             }
             stack.push(i);
         }
