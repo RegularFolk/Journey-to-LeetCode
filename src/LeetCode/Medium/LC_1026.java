@@ -2,9 +2,10 @@ package LeetCode.Medium;
 
 import DataStructure.TreeNode;
 
-import java.util.Stack;
+import java.lang.reflect.Method;
+import java.util.*;
 
-public class LC_1026 {
+class LC_1026 {
     /*
      * 维护一条路径上到该节点之前的最大值和最小值
      * 维护两个单调栈记录路上的最大最小值的变化
@@ -34,8 +35,8 @@ public class LC_1026 {
     }
 
     /*
-    * 维护最大值就好，没有用到回溯
-    * */
+     * 维护最大值就好，没有用到回溯
+     * */
     public int maxAncestorDiff2(TreeNode root) {
         dfs2(root, root.val, root.val);
         return ans;
@@ -50,4 +51,47 @@ public class LC_1026 {
             dfs2(root.right, min, max);
         }
     }
+}
+
+class LC_1026_redo_1 {
+    /*
+     * 显然是使用DFS
+     * 需要记录DFS过程中，父节点的最大值和最小值，当前节点与这两个值作差
+     * 实际上写复杂了，需要注意到不需要回溯，可以在递归过程中携带着最值
+     * */
+    public static int ans = 0;
+    public PriorityQueue<TreeNode> minQueue = new PriorityQueue<>(Comparator.comparingInt(a -> a.val));
+    public PriorityQueue<TreeNode> maxQueue = new PriorityQueue<>(Comparator.comparingInt(a -> -a.val));
+    public Set<TreeNode> usedNode = new HashSet<>();
+
+    public int maxAncestorDiff(TreeNode root) {
+        minQueue = new PriorityQueue<>(Comparator.comparingInt(a -> a.val));
+        maxQueue = new PriorityQueue<>(Comparator.comparingInt(a -> -a.val));
+        usedNode = new HashSet<>();
+        ans = 0;
+        dfs(root);
+        return ans;
+    }
+
+    private void dfs(TreeNode root) {
+        if (root == null) return;
+        if (!minQueue.isEmpty()) {
+            ans = Math.max(ans, Math.abs(minQueue.peek().val - root.val));
+        }
+        if (!maxQueue.isEmpty()) {
+            ans = Math.max(ans, Math.abs(maxQueue.peek().val - root.val));
+        }
+        minQueue.add(root);
+        maxQueue.add(root);
+        dfs(root.left);
+        dfs(root.right);
+        usedNode.add(root);
+        while (!minQueue.isEmpty() && (minQueue.peek().equals(root) || usedNode.contains(minQueue.peek()))) {
+            minQueue.poll();
+        }
+        while (!maxQueue.isEmpty() && (maxQueue.peek().equals(root) || usedNode.contains(maxQueue.peek()))) {
+            maxQueue.poll();
+        }
+    }
+    
 }

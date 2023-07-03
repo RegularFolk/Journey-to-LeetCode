@@ -1,26 +1,35 @@
 package LeetCode.Medium;
 
-import java.util.HashMap;
-import java.util.Map;
-//用哈希表效率比较低
+import org.junit.Test;
+
 public class LC_3 {
-    public static int lengthOfLongestSubstring(String s) {
-        int ans = 0;
-        Map<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < s.length(); i++) {
-            int count = 0;
-            for (int j = i; j < s.length(); j++) {
-                if (!map.containsKey(s.charAt(j))) {
-                    map.put(s.charAt(j), j);
-                    count++;
-                } else {
-                    i = map.get(s.charAt(j));
-                    map.clear();
-                    break;
-                }
+
+    /*
+     * 一个bit位表示是否出现过
+     * 双指针
+     * */
+    public int lengthOfLongestSubstring(String s) {
+        if (s == null || s.length() == 0) return 0;
+        char[] chars = s.toCharArray();
+        boolean[] map = new boolean[130];
+        int l = 0, r = 0, ans = 0, count = 0;
+        while (r < chars.length) {
+            //当前字符没有出现过，左指针右移
+            while (map[chars[r]] && l <= r) {
+                map[chars[l]] = false;
+                l++;
+                count--;
             }
-            ans = Math.max(count, ans);
+            count++;
+            map[chars[r]] = true;
+            r++;
+            ans = Math.max(ans, count);
         }
         return ans;
+    }
+
+    @Test
+    public void x() {
+        System.out.println(lengthOfLongestSubstring("abcabcbb"));
     }
 }
