@@ -26,4 +26,26 @@ public class LC_746 {
         }
         return prev1;
     }
+
+}
+
+class redo {
+
+    /*
+     * dp[i] 表示抵达i层的最小花费
+     * dp[i] = dp[i-1] + cost[i-1] or dp[i-2] + cost[i-2]
+     * 依赖前两个值，依旧可以使用滚动数组
+     * */
+    public int minCostClimbingStairs(int[] cost) {
+        // 从高度为3开始
+        int a = 0, b = 0, c = 0;
+        for (int i = 2; i <= cost.length; i++) {
+            c = Math.min(a + cost[i - 2], b + cost[i - 1]);
+            a = b;
+            b = c;
+        }
+        return c;
+    }
+
+
 }

@@ -26,27 +26,26 @@ public class LC_213_mark {
 
 class LC_213_redo {
     /*
-     * 偷两遍
-     * 第一遍舍弃第一个
-     * 第二遍舍弃最后一个
-     * 把环给断开
+     * 打家劫舍一（LC_198）的改进版
+     * 拆开算两次，一次取头不取尾，一次取尾不取头
      * */
     public int rob(int[] nums) {
-        if (nums == null || nums.length == 0) return 0;
         if (nums.length == 1) return nums[0];
         if (nums.length == 2) return Math.max(nums[0], nums[1]);
-        int ans1 = rob(nums, 0, nums.length - 2);
-        int ans2 = rob(nums, 1, nums.length - 1);
-        return Math.max(ans1, ans2);
+        return Math.max(help(nums, 0, nums.length - 1), help(nums, 1, nums.length));
     }
 
-    private int rob(int[] nums, int l, int r) {
-        int[] dp = new int[nums.length];
-        dp[l] = nums[l];
-        dp[l + 1] = Math.max(nums[l], nums[l + 1]);
-        for (int i = l + 2; i <= r; i++) {
-            dp[i] = Math.max((nums[i] + dp[i - 2]), dp[i - 1]);
+    private int help(int[] nums, int l, int r) {
+        int[] cp = new int[r - l];
+        System.arraycopy(nums, l, cp, 0, cp.length);
+        if (cp.length == 2) return Math.max(cp[0], cp[1]);
+        if (cp.length == 1) return cp[0];
+        int a = cp[0], b = Math.max(cp[0], cp[1]), c = -1;
+        for (int i = 2; i < cp.length; i++) {
+            c = Math.max(a + cp[i], b);
+            a = b;
+            b = c;
         }
-        return dp[r];
+        return c;
     }
 }

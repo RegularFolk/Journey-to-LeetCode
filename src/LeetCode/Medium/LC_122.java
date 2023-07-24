@@ -34,3 +34,18 @@ public class LC_122 {
         return sum;
     }
 }
+
+class redo_122 {
+    /*
+     * 任意多次卖，只要后一天价格比前一天高就可以卖
+     * */
+    public int maxProfit(int[] prices) {
+        int ans = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i - 1]) {
+                ans += prices[i] - prices[i - 1];
+            }
+        }
+        return ans;
+    }
+}

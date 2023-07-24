@@ -43,3 +43,19 @@ public class LC_53 {
         return ans;
     }
 }
+
+class redo_53 {
+    /*
+     * 经典的贪心
+     * 一直往后加，直到和为负数，丢掉当前的累加
+     * */
+    public int maxSubArray(int[] nums) {
+        int max = nums[0], cnt = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (cnt < 0) cnt = 0;
+            cnt += nums[i];
+            max = Math.max(max, cnt);
+        }
+        return max;
+    }
+}

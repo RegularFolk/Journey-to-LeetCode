@@ -1,5 +1,7 @@
 package LeetCode.Medium;
 
+import java.util.LinkedList;
+
 public class LC_300_mark {
     /*
      * LIS(Largest Increasing Subsequence)问题，最长上升子序列
@@ -50,5 +52,27 @@ public class LC_300_mark {
             }
         }
         return ans;
+    }
+}
+
+class redo_300 {
+    /*
+     * 最长递增子序列
+     * dp[i] 为以下标为 i 结尾的最长递增子序列
+     * 对于每一个数往前找比起小的最长的
+     * */
+    public int lengthOfLIS(int[] nums) {
+        int max = 1;
+        int[] dp = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            dp[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (nums[j] < nums[i] && dp[j] + 1 > dp[i]) {
+                    dp[i] = dp[j] + 1;
+                    max = Math.max(max, dp[i]);
+                }
+            }
+        }
+        return max;
     }
 }

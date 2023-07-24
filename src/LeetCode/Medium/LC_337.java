@@ -111,3 +111,37 @@ public class LC_337 {
         }
     }
 }
+
+class redo_337 {
+    /*
+     * 每一个节点需要向上提供两个值
+     * 一个是包含自身的最大价值，一个是不包含自身的最大价值
+     * 包含自身的最大价值 = 自身的值 + 左右子树不包含自身的最大价值之和
+     * 不包含自身的最大价值 = 左右子树提供的两个值各自的最大值之和
+     * */
+    public int rob(TreeNode root) {
+        entry e = dfs(root);
+        return e.getMax();
+    }
+
+    private entry dfs(TreeNode node) {
+        if (node == null) return new entry(0, 0);
+        entry le = dfs(node.left);
+        entry re = dfs(node.right);
+        return new entry(node.val + le.nonSelf + re.nonSelf, le.getMax() + re.getMax());
+    }
+
+    private static class entry {
+        int self;
+        int nonSelf;
+
+        public entry(int self, int nonSelf) {
+            this.self = self;
+            this.nonSelf = nonSelf;
+        }
+
+        public int getMax() {
+            return Math.max(this.self, this.nonSelf);
+        }
+    }
+}

@@ -70,3 +70,30 @@ public class LC_62_mark {
         return dp[0][0];
     }
 }
+
+
+class redo_62 {
+
+    /*
+     * dp[i][j] 表示抵达(i,j)的方法数
+     * 所以对于任意一格，只能从这一格的左边或者上面走过来
+     * 所以dp[i][i] = dp[i-1][j] + dp[i][j-1]
+     * 初始化时需要初始化最上面一行和最左边一排
+     * */
+    public int uniquePaths(int m, int n) {
+        int[][] dp = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            dp[i][0] = 1;
+        }
+        for (int i = 0; i < n; i++) {
+            dp[0][i] = 1;
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+            }
+        }
+        return dp[m - 1][n - 1];
+    }
+
+}

@@ -73,3 +73,48 @@ public class LC_215_mark {
         System.out.println(i);
     }
 }
+
+
+class redo_215 {
+    /*
+     * 快速选择，基于快速排序
+     * */
+    public int findKthLargest(int[] nums, int k) {
+        return findK(nums, k, 0, nums.length - 1);
+    }
+
+    /**
+     * <pre>
+     * 递归选择方法
+     * 快速选择思路：
+     *  每轮选择一个pivot，比它大的放左边边，比它小的放右边，判断出它是第几大
+     *  如果等于k，直接返回
+     *  如果大于k，说明比目标小，在左侧继续寻找
+     *  如果小于k，说明比目标大，在右侧继续寻找
+     * 快速选择本质上是部分排序
+     * pivot可以任意取一个，在这里取原本数组中最左边一个数
+     * </pre>
+     *
+     * @param nums 待选的数组
+     * @param k    第K大的
+     * @param l    待选数组左侧起始下标
+     * @param r    待选数组右侧结尾下标
+     * @return 选出的数
+     */
+    private int findK(int[] nums, int k, int l, int r) {
+        int pos = partition(nums, l, r); // pivot在当前是第几大的
+        int rank = pos + 1;
+        if (rank == k) {
+            return nums[pos];
+        } else if (rank > k) {
+            return findK(nums, k, l, pos - 1);
+        } else {
+            return findK(nums, k, pos + 1, r);
+        }
+    }
+
+    // 找出下标l对应的数是位于哪个下标的
+    private int partition(int[] nums, int l, int r) {
+        return 0;
+    }
+}
