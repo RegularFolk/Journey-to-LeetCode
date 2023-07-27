@@ -3,6 +3,11 @@ package LeetCode.Hard;
 import DataStructure.ListNode;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
+
 public class LC_23_mark {
     /*
      * 分治法，类似于MergeSort
@@ -59,5 +64,34 @@ public class LC_23_mark {
             System.out.println("listNode.val = " + listNode.val);
             listNode = listNode.next;
         }
+    }
+}
+
+class redo_23 {
+    /*
+     * 考虑定义一个小根堆来实现
+     * 时间效率不如分治
+     * */
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) return null;
+        PriorityQueue<ListNode> heap = new PriorityQueue<>(Comparator.comparingInt(a -> a.val));
+        List<ListNode> listNodes = new ArrayList<>();
+        for (ListNode list : lists) {
+            if (list != null) {
+                listNodes.add(list);
+            }
+        }
+        heap.addAll(listNodes);
+        ListNode dummy = new ListNode(), cursor = dummy;
+        while (!heap.isEmpty()) {
+            ListNode node = heap.poll();
+            cursor.next = node;
+            cursor = cursor.next;
+            node = node.next;
+            if (node != null) {
+                heap.add(node);
+            }
+        }
+        return dummy.next;
     }
 }

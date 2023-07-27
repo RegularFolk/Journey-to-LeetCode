@@ -1,5 +1,6 @@
 package LeetCode.Easy;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class LC_20 {
@@ -33,5 +34,40 @@ public class LC_20 {
             }
         }
         return stack[0] == 'N';
+    }
+}
+
+class redo_20 {
+    public boolean isValid(String s) {
+        LinkedList<Character> stack = new LinkedList<>();
+        char[] chars = s.toCharArray();
+        for (char c : chars) {
+            switch (c) {
+                case '}':
+                    if (!stack.isEmpty() && stack.getLast() == '{') {
+                        stack.removeLast();
+                    } else {
+                        stack.addLast(c);
+                    }
+                    break;
+                case ']':
+                    if (!stack.isEmpty() && stack.getLast() == '[') {
+                        stack.removeLast();
+                    } else {
+                        stack.addLast(c);
+                    }
+                    break;
+                case ')':
+                    if (!stack.isEmpty() && stack.getLast() == '(') {
+                        stack.removeLast();
+                    } else {
+                        stack.addLast(c);
+                    }
+                    break;
+                default:
+                    stack.addLast(c);
+            }
+        }
+        return stack.isEmpty();
     }
 }
